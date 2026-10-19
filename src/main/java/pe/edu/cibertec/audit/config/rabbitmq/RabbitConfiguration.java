@@ -55,7 +55,10 @@ public class RabbitConfiguration {
 
         return new Declarables(declarablesList);
     }
-
+    @Bean
+    public Queue auditEventsQueue() {
+        return new Queue("audit-events-queue", true);
+    }
     @Bean
     public MessageConverter messageConverter() {
         return new JacksonJsonMessageConverter();
