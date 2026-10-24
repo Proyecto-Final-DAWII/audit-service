@@ -10,7 +10,7 @@ import pe.edu.cibertec.audit.service.AuditService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/audit")
+@RequestMapping({"/api/v1/audit", "/api/audit"})
 @RequiredArgsConstructor
 public class AuditController {
 
@@ -34,7 +34,7 @@ public class AuditController {
      * Obtiene el historial de auditoría filtrado por el ID del activo.
      * URL de prueba: GET http://localhost:8083/api/v1/audit/asset/LAP-001
      */
-    @GetMapping("/asset/{assetId}")
+    @GetMapping({"/asset/{assetId}", "/assets/{assetId}/history"})
     public ResponseEntity<List<AuditResponseDto>> getHistoryByAsset(@PathVariable String assetId) {
         var records = auditService.getHistoryByAsset(assetId);
         var responseDtos = records.stream()
